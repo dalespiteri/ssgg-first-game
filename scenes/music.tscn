@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://b4v4g4etjvtq0"]
+
+[ext_resource type="AudioStream" uid="uid://oxfbvwp6dnb8" path="res://assets/music/Kevin-Macleod-Pippin-the-Hunchback.mp3" id="1_o7j03"]
+
+[node name="Music" type="Node2D"]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("1_o7j03")
+autoplay = true
+bus = &"Music"
