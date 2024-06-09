@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d3qlbxn562jwl"
-path="res://.godot/imported/robinHoodHand_.png-493968023789f629c8761edfc8ed8426.ctex"
+uid="uid://v2074xktypku"
+path="res://.godot/imported/richardIOfEngland_.png-659fb613c984fc1126b78e171b653db4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/robinHoodHand_.png"
-dest_files=["res://.godot/imported/robinHoodHand_.png-493968023789f629c8761edfc8ed8426.ctex"]
+source_file="res://assets/sprites/richardIOfEngland_.png"
+dest_files=["res://.godot/imported/richardIOfEngland_.png-659fb613c984fc1126b78e171b653db4.ctex"]
 
 [params]
 

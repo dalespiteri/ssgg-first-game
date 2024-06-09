@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://eul5uo2fqnqa"
-path="res://.godot/imported/friarTuckHand_.png-56ee1fc8fb71b58900ac7df0276cdffa.ctex"
+uid="uid://d1tce8qgyplpc"
+path="res://.godot/imported/robinHood_.png-f360bf7497bcdc310f02169af135b752.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/friarTuckHand_.png"
-dest_files=["res://.godot/imported/friarTuckHand_.png-56ee1fc8fb71b58900ac7df0276cdffa.ctex"]
+source_file="res://assets/sprites/robinHood_.png"
+dest_files=["res://.godot/imported/robinHood_.png-f360bf7497bcdc310f02169af135b752.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://3g14n5or4xog"
-path="res://.godot/imported/sheriffOfNottingham_.png-7fb27d36a497c3896ff7af5b8c4c48dd.ctex"
+uid="uid://2ae50ytkla4u"
+path="res://.godot/imported/maidMarian_.png-3e002842ca5772424e3ca1660076f92c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/sheriffOfNottingham_.png"
-dest_files=["res://.godot/imported/sheriffOfNottingham_.png-7fb27d36a497c3896ff7af5b8c4c48dd.ctex"]
+source_file="res://assets/sprites/maidMarian_.png"
+dest_files=["res://.godot/imported/maidMarian_.png-3e002842ca5772424e3ca1660076f92c.ctex"]
 
 [params]
 

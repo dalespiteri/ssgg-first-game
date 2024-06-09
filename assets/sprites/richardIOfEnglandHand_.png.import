@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://devnkpk1at42y"
-path="res://.godot/imported/richardIOfEnglandHand_.png-e8cedcf01249b6045d35b80dea207d59.ctex"
+path="res://.godot/imported/richardIOfEnglandHand_.png-c47e53a27bc369bf90eb58d652e4882d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/richardIOfEnglandHand_.png"
-dest_files=["res://.godot/imported/richardIOfEnglandHand_.png-e8cedcf01249b6045d35b80dea207d59.ctex"]
+source_file="res://assets/sprites/richardIOfEnglandHand_.png"
+dest_files=["res://.godot/imported/richardIOfEnglandHand_.png-c47e53a27bc369bf90eb58d652e4882d.ctex"]
 
 [params]
 

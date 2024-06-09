@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d4ivnmxjv2dbi"
-path="res://.godot/imported/prioressOfKirkleesHand_.png-bc383bcfb1ab5409392a3fa881c0b445.ctex"
+uid="uid://bdjx2vsf65m3m"
+path="res://.godot/imported/bishopOfHereford_.png-fb602d3ce240f3a81fbc361eb3d64163.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/prioressOfKirkleesHand_.png"
-dest_files=["res://.godot/imported/prioressOfKirkleesHand_.png-bc383bcfb1ab5409392a3fa881c0b445.ctex"]
+source_file="res://assets/sprites/bishopOfHereford_.png"
+dest_files=["res://.godot/imported/bishopOfHereford_.png-fb602d3ce240f3a81fbc361eb3d64163.ctex"]
 
 [params]
 

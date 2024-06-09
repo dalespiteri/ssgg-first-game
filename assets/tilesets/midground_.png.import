@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dccy3vonya425"
-path="res://.godot/imported/prioressOfKirklees_.png-31f4c1e324b85d1a08fa8a092922e9cc.ctex"
+uid="uid://6da26gll0ou2"
+path="res://.godot/imported/midground_.png-eb82653f415ed001d68871c6f1e9e1bf.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/prioressOfKirklees_.png"
-dest_files=["res://.godot/imported/prioressOfKirklees_.png-31f4c1e324b85d1a08fa8a092922e9cc.ctex"]
+source_file="res://assets/tilesets/midground_.png"
+dest_files=["res://.godot/imported/midground_.png-eb82653f415ed001d68871c6f1e9e1bf.ctex"]
 
 [params]
 

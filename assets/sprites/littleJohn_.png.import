@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d1tce8qgyplpc"
-path="res://.godot/imported/robinHood_.png-8142768bf49320f9156e99c6d8ce6184.ctex"
+uid="uid://fbad7qqn6mfb"
+path="res://.godot/imported/littleJohn_.png-2ccab7d4021f21aac972bb873d370a19.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/robinHood_.png"
-dest_files=["res://.godot/imported/robinHood_.png-8142768bf49320f9156e99c6d8ce6184.ctex"]
+source_file="res://assets/sprites/littleJohn_.png"
+dest_files=["res://.godot/imported/littleJohn_.png-2ccab7d4021f21aac972bb873d370a19.ctex"]
 
 [params]
 

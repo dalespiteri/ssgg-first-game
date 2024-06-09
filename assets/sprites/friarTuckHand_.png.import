@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bdjx2vsf65m3m"
-path="res://.godot/imported/bishopOfHereford_.png-178804c0a3f1d5dde30478991a0c9de9.ctex"
+uid="uid://eul5uo2fqnqa"
+path="res://.godot/imported/friarTuckHand_.png-affaf0ffb3ff6899f27d1c777bcff496.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/bishopOfHereford_.png"
-dest_files=["res://.godot/imported/bishopOfHereford_.png-178804c0a3f1d5dde30478991a0c9de9.ctex"]
+source_file="res://assets/sprites/friarTuckHand_.png"
+dest_files=["res://.godot/imported/friarTuckHand_.png-affaf0ffb3ff6899f27d1c777bcff496.ctex"]
 
 [params]
 

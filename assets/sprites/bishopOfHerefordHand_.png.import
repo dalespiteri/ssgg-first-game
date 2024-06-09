@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ny4hr3avlwhn"
-path="res://.godot/imported/littleJohnHand_.png-9a244e49d96ea6720602b8e24b6b866d.ctex"
+uid="uid://bq6qi7fndo6xs"
+path="res://.godot/imported/bishopOfHerefordHand_.png-4d0d02463e3b72bdba081a866aedc4d2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/littleJohnHand_.png"
-dest_files=["res://.godot/imported/littleJohnHand_.png-9a244e49d96ea6720602b8e24b6b866d.ctex"]
+source_file="res://assets/sprites/bishopOfHerefordHand_.png"
+dest_files=["res://.godot/imported/bishopOfHerefordHand_.png-4d0d02463e3b72bdba081a866aedc4d2.ctex"]
 
 [params]
 
