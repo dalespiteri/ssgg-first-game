@@ -1,0 +1,90 @@
+[gd_scene load_steps=12 format=3 uid="uid://ba4xk7eeb27"]
+
+[ext_resource type="Texture2D" uid="uid://d1tce8qgyplpc" path="res://sprites/robinHood_.png" id="1_es8py"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u8pij"]
+atlas = ExtResource("1_es8py")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_soo5f"]
+atlas = ExtResource("1_es8py")
+region = Rect2(24, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r4e7h"]
+atlas = ExtResource("1_es8py")
+region = Rect2(48, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fnalq"]
+atlas = ExtResource("1_es8py")
+region = Rect2(72, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_237pg"]
+atlas = ExtResource("1_es8py")
+region = Rect2(0, 48, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lgt80"]
+atlas = ExtResource("1_es8py")
+region = Rect2(24, 48, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uobrk"]
+atlas = ExtResource("1_es8py")
+region = Rect2(48, 48, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_brd7a"]
+atlas = ExtResource("1_es8py")
+region = Rect2(72, 48, 24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0qeyd"]
+animations = [{
+"frames": [{
+"duration": 2.5,
+"texture": SubResource("AtlasTexture_u8pij")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_soo5f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r4e7h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fnalq")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_237pg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lgt80")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uobrk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_brd7a")
+}],
+"loop": true,
+"name": &"run",
+"speed": 16.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ndq0o"]
+radius = 4.0
+height = 18.0
+
+[node name="Player" type="CharacterBody2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -12)
+sprite_frames = SubResource("SpriteFrames_0qeyd")
+animation = &"run"
+autoplay = "idle"
+frame = 2
+frame_progress = 0.396631
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -9)
+shape = SubResource("CapsuleShape2D_ndq0o")
