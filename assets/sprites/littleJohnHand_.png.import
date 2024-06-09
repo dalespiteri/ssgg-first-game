@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dixahsooud6hp"
-path="res://.godot/imported/weapons_.png-6dcadd2d878f6286687dadb176a00132.ctex"
+uid="uid://ny4hr3avlwhn"
+path="res://.godot/imported/littleJohnHand_.png-0a35d98bc0a49f2ab85efcea10afc331.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/weapons_.png"
-dest_files=["res://.godot/imported/weapons_.png-6dcadd2d878f6286687dadb176a00132.ctex"]
+source_file="res://assets/sprites/littleJohnHand_.png"
+dest_files=["res://.godot/imported/littleJohnHand_.png-0a35d98bc0a49f2ab85efcea10afc331.ctex"]
 
 [params]
 

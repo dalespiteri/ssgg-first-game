@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://fbad7qqn6mfb"
-path="res://.godot/imported/littleJohn_.png-e6e393ef46fc735fdea5a95a3c41a432.ctex"
+uid="uid://dccy3vonya425"
+path="res://.godot/imported/prioressOfKirklees_.png-8c0c5b1ca38b50a73c3d751fa4216f0c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/littleJohn_.png"
-dest_files=["res://.godot/imported/littleJohn_.png-e6e393ef46fc735fdea5a95a3c41a432.ctex"]
+source_file="res://assets/sprites/prioressOfKirklees_.png"
+dest_files=["res://.godot/imported/prioressOfKirklees_.png-8c0c5b1ca38b50a73c3d751fa4216f0c.ctex"]
 
 [params]
 

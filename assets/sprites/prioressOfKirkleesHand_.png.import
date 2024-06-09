@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bxe3mxb48wcwl"
-path="res://.godot/imported/friarTuck_.png-5b96daeb979dde5eefd36d260eef293d.ctex"
+uid="uid://d4ivnmxjv2dbi"
+path="res://.godot/imported/prioressOfKirkleesHand_.png-e902f64290e1bb2c3cc6399ac558dbf8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/friarTuck_.png"
-dest_files=["res://.godot/imported/friarTuck_.png-5b96daeb979dde5eefd36d260eef293d.ctex"]
+source_file="res://assets/sprites/prioressOfKirkleesHand_.png"
+dest_files=["res://.godot/imported/prioressOfKirkleesHand_.png-e902f64290e1bb2c3cc6399ac558dbf8.ctex"]
 
 [params]
 

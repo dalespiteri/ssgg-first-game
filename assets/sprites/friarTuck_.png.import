@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://mlacfyju0hfo"
-path="res://.godot/imported/maidMarianHand_.png-df5efd20da5d22be20225b0f04b67934.ctex"
+uid="uid://bxe3mxb48wcwl"
+path="res://.godot/imported/friarTuck_.png-ac10a8ce7de00fe0657dcaed9491c4a0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/maidMarianHand_.png"
-dest_files=["res://.godot/imported/maidMarianHand_.png-df5efd20da5d22be20225b0f04b67934.ctex"]
+source_file="res://assets/sprites/friarTuck_.png"
+dest_files=["res://.godot/imported/friarTuck_.png-ac10a8ce7de00fe0657dcaed9491c4a0.ctex"]
 
 [params]
 
