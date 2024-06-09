@@ -37,13 +37,13 @@ region = Rect2(72, 48, 24, 24)
 [sub_resource type="SpriteFrames" id="SpriteFrames_0qeyd"]
 animations = [{
 "frames": [{
-"duration": 2.5,
+"duration": 7.0,
 "texture": SubResource("AtlasTexture_u8pij")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_soo5f")
 }, {
-"duration": 1.0,
+"duration": 2.0,
 "texture": SubResource("AtlasTexture_r4e7h")
 }, {
 "duration": 1.0,
@@ -51,7 +51,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"idle",
-"speed": 6.0
+"speed": 7.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -80,10 +80,9 @@ height = 18.0
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -12)
 sprite_frames = SubResource("SpriteFrames_0qeyd")
-animation = &"run"
+animation = &"idle"
 autoplay = "idle"
-frame = 2
-frame_progress = 0.396631
+frame_progress = 0.2071
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -9)
