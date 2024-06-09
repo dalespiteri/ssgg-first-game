@@ -11,13 +11,13 @@
 position = Vector2(592, 326)
 script = ExtResource("2_wubgp")
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(592, 326)
+[node name="Camera2D" type="Camera2D" parent="Player"]
 zoom = Vector2(4, 4)
-position_smoothing_enabled = true
+process_callback = 0
+position_smoothing_speed = 10.0
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
+[node name="Ground" type="StaticBody2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground"]
 position = Vector2(591, 341)
 shape = SubResource("WorldBoundaryShape2D_m33e6")
