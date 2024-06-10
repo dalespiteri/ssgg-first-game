@@ -1,9 +1,9 @@
 [gd_scene load_steps=13 format=3 uid="uid://ba4xk7eeb27"]
 
-[ext_resource type="Texture2D" uid="uid://c51yxj3a4m46b" path="res://assets/sprites/robin_run.png" id="1_42xyi"]
-[ext_resource type="Texture2D" uid="uid://kt0s3tj5d7vm" path="res://assets/sprites/robin_jump.png" id="2_3nca4"]
-[ext_resource type="Texture2D" uid="uid://u352bls3rxcn" path="res://assets/sprites/robin_idle.png" id="2_ksibt"]
-[ext_resource type="Texture2D" uid="uid://bv7qsydqk0f1f" path="res://assets/sprites/robin_fall.png" id="4_hwwvm"]
+[ext_resource type="Texture2D" path="res://assets/sprites/robin_run.png" id="1_42xyi"]
+[ext_resource type="Texture2D" path="res://assets/sprites/robin_jump.png" id="2_3nca4"]
+[ext_resource type="Texture2D" path="res://assets/sprites/robin_idle.png" id="2_ksibt"]
+[ext_resource type="Texture2D" path="res://assets/sprites/robin_fall.png" id="4_hwwvm"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ndq0o"]
 radius = 4.0

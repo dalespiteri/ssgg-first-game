@@ -57,5 +57,3 @@ func update_animations(direction: int):
 			a_p.play("jump")
 		elif velocity.y > 0:
 			a_p.play("fall")
-			
-		
