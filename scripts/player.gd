@@ -4,6 +4,7 @@ const SPEED = 175.0
 const JUMP_VELOCITY = -250.0
 
 var jumps_remaining = 2
+var current_direction = 1
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -44,11 +45,17 @@ func _physics_process(delta):
 	move_and_slide()
 	update_animations(direction)
 	
+
 func update_animations(direction: int):
 	if is_on_floor():
 		if direction == 0:
 			a_p.play("idle")
 		else:
-			a_p.play("run")
+			a_p.play("run")	
 	else:
-		a_p.play("jump")
+		if velocity.y < 0:
+			a_p.play("jump")
+		elif velocity.y > 0:
+			a_p.play("fall")
+			
+		
