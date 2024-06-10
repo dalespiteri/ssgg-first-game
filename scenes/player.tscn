@@ -1,13 +1,15 @@
-[gd_scene load_steps=13 format=3 uid="uid://ba4xk7eeb27"]
+[gd_scene load_steps=16 format=3 uid="uid://ba4xk7eeb27"]
 
-[ext_resource type="Texture2D" path="res://assets/sprites/robin_run.png" id="1_42xyi"]
-[ext_resource type="Texture2D" path="res://assets/sprites/robin_jump.png" id="2_3nca4"]
-[ext_resource type="Texture2D" path="res://assets/sprites/robin_idle.png" id="2_ksibt"]
-[ext_resource type="Texture2D" path="res://assets/sprites/robin_fall.png" id="4_hwwvm"]
+[ext_resource type="Texture2D" uid="uid://c51yxj3a4m46b" path="res://assets/sprites/robin_run.png" id="1_42xyi"]
+[ext_resource type="Texture2D" uid="uid://kt0s3tj5d7vm" path="res://assets/sprites/robin_jump.png" id="2_3nca4"]
+[ext_resource type="Texture2D" uid="uid://u352bls3rxcn" path="res://assets/sprites/robin_idle.png" id="2_ksibt"]
+[ext_resource type="Texture2D" uid="uid://bv7qsydqk0f1f" path="res://assets/sprites/robin_fall.png" id="4_hwwvm"]
+[ext_resource type="Texture2D" uid="uid://cv3ipy3808t4a" path="res://assets/sprites/robin_transform.png" id="5_gm7bx"]
+[ext_resource type="AudioStream" uid="uid://db2wa5384td0i" path="res://assets/SFX/power_up.wav" id="6_2pdq1"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ndq0o"]
 radius = 4.0
-height = 14.9
+height = 15.0
 
 [sub_resource type="Animation" id="Animation_3yre3"]
 length = 0.001
@@ -33,7 +35,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [8]
+"values": [4]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -45,7 +47,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [6]
+"values": [1]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -58,6 +60,59 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [ExtResource("1_42xyi")]
+}
+
+[sub_resource type="Animation" id="Animation_nobwc"]
+resource_name = "fall"
+length = 0.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2d:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("4_hwwvm")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2d:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2d:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2d:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
 }
 
 [sub_resource type="Animation" id="Animation_ognmw"]
@@ -235,8 +290,8 @@ tracks/0/keys = {
 "values": [24, 25, 26, 27]
 }
 
-[sub_resource type="Animation" id="Animation_nobwc"]
-resource_name = "fall"
+[sub_resource type="Animation" id="Animation_2t3b2"]
+resource_name = "transform"
 length = 0.2
 loop_mode = 1
 tracks/0/type = "value"
@@ -249,7 +304,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("4_hwwvm")]
+"values": [ExtResource("5_gm7bx")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -295,6 +350,7 @@ _data = {
 "idle": SubResource("Animation_ognmw"),
 "jump": SubResource("Animation_chj1y"),
 "run": SubResource("Animation_ptqb8"),
+"transform": SubResource("Animation_2t3b2"),
 "turn": SubResource("Animation_akivp")
 }
 
@@ -303,8 +359,7 @@ _data = {
 [node name="Sprite2d" type="Sprite2D" parent="."]
 position = Vector2(0, -12)
 texture = ExtResource("1_42xyi")
-hframes = 8
-vframes = 6
+hframes = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -8)
@@ -319,3 +374,17 @@ autoplay = "idle"
 [node name="CoyoteTime" type="Timer" parent="."]
 wait_time = 0.15
 one_shot = true
+
+[node name="Shrink" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_2pdq1")
+volume_db = -5.0
+pitch_scale = 1.1
+attenuation = 0.353553
+bus = &"Sound Effects"
+
+[node name="Grow" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_2pdq1")
+volume_db = -9.0
+pitch_scale = 0.7
+attenuation = 4.43827
+bus = &"Sound Effects"
