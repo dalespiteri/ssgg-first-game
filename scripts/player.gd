@@ -14,8 +14,8 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @onready var sprite_2d = $Sprite2d
 @onready var coyote_time = $CoyoteTime
 @onready var collision_shape_2d = $CollisionShape2D
-@onready var shrink = $Shrink
-@onready var grow = $Grow
+@onready var shrink = $SFX/Shrink
+@onready var grow = $SFX/Grow
 
 func _physics_process(delta):
 	
