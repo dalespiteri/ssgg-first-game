@@ -1,11 +1,12 @@
 extends CharacterBody2D
 
-const SPEED = 175.0
-const JUMP_VELOCITY = -250.0
+var current_size = 1
+const BASE_SPEED = 175.0
+const BASE_JUMP_VELOCITY = -250.0
+var current_speed = BASE_SPEED * current_size
+var current_jump_velocity = BASE_JUMP_VELOCITY * current_size
 
 var jumps_remaining = 2
-var current_direction = 1
-var current_size = 1
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -45,16 +46,16 @@ func _physics_process(delta):
 			jumps_remaining = 1
 		else:
 			jumps_remaining = 0
-		velocity.y = JUMP_VELOCITY
+		velocity.y = current_jump_velocity
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var direction = Input.get_axis("move_left", "move_right")
 	
 	if direction:
-		velocity.x = direction * SPEED
+		velocity.x = direction * current_speed
 	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
+		velocity.x = move_toward(velocity.x, 0, current_speed)
 	
 	if direction < 0:
 		sprite_2d.flip_h = true
@@ -73,9 +74,15 @@ func _physics_process(delta):
 	
 func on_tween_finished():
 	if current_size == 1:
-		current_size = 0
+		current_size = 0.75
 	else:
 		current_size = 1
+	set_current_movement()
+
+func set_current_movement():
+	print(current_size)
+	current_speed = BASE_SPEED * current_size
+	current_jump_velocity = BASE_JUMP_VELOCITY * current_size
 
 func update_animations(direction: int):
 	if is_on_floor():
