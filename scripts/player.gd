@@ -21,19 +21,7 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 func _physics_process(delta):
 	
 	if Input.is_action_just_pressed("toggle_size"):
-		var colShape = CapsuleShape2D.new()
-		colShape.radius = 2.0 if current_size == 1 else 4.0
-		colShape.height = 7.5 if current_size == 1 else 15.0
-		collision_shape_2d.set_shape(colShape)
-		collision_shape_2d.position = Vector2(0, -10) if current_size == 1 else Vector2(0, -8)
-		var tween = create_tween()
-		if current_size == 1:
-			shrink.play()
-			tween.tween_property(sprite_2d, "scale", Vector2(0.5, 0.5), 0.1)
-		else:
-			grow.play()
-			tween.tween_property(sprite_2d, "scale", Vector2(1, 1), 0.1)
-		tween.connect("finished", on_tween_finished)
+		toggle_size()
 		
 	# Add the gravity.
 	if not is_on_floor():
@@ -71,7 +59,22 @@ func _physics_process(delta):
 		coyote_time.start()
 		
 	update_animations(direction)
-	
+
+func toggle_size():
+	var colShape = CapsuleShape2D.new()
+	colShape.radius = 2.0 if current_size == 1 else 4.0
+	colShape.height = 7.5 if current_size == 1 else 15.0
+	collision_shape_2d.set_shape(colShape)
+	collision_shape_2d.position = Vector2(0, -10) if current_size == 1 else Vector2(0, -8)
+	var tween = create_tween()
+	if current_size == 1:
+		shrink.play()
+		tween.tween_property(sprite_2d, "scale", Vector2(0.5, 0.5), 0.1)
+	else:
+		grow.play()
+		tween.tween_property(sprite_2d, "scale", Vector2(1, 1), 0.1)
+	tween.connect("finished", on_tween_finished)
+
 func on_tween_finished():
 	if current_size == 1:
 		current_size = 0.75
@@ -89,7 +92,7 @@ func update_animations(direction: int):
 		if direction == 0:
 			a_p.play("idle")
 		else:
-			a_p.play("run")	
+			a_p.play("run")
 	else:
 		if velocity.y < 0:
 			a_p.play("jump")
