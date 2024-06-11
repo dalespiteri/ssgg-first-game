@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://btaxm8f8wlxe4"]
+
+[node name="CooldownBar" type="ColorRect"]
+offset_right = 12.0
+offset_bottom = 3.0
+
+[node name="Meter" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 11.0
+offset_bottom = 2.0
+color = Color(0.403922, 0.831373, 0.584314, 1)

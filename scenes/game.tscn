@@ -1,7 +1,6 @@
-[gd_scene load_steps=11 format=3 uid="uid://0k5sbebatipk"]
+[gd_scene load_steps=10 format=3 uid="uid://0k5sbebatipk"]
 
 [ext_resource type="PackedScene" uid="uid://ba4xk7eeb27" path="res://scenes/player.tscn" id="1_diavd"]
-[ext_resource type="Script" path="res://scripts/player.gd" id="2_wubgp"]
 [ext_resource type="Texture2D" uid="uid://6da26gll0ou2" path="res://assets/tilesets/midground_.png" id="3_u3171"]
 [ext_resource type="Texture2D" uid="uid://cobxba6uh154w" path="res://assets/tilesets/background_.png" id="4_rlt51"]
 [ext_resource type="PackedScene" uid="uid://0717asw2pmah" path="res://scenes/next_level.tscn" id="5_8ko8s"]
@@ -181,7 +180,6 @@ layer_1/tile_data = PackedInt32Array(131063, 131072, 2, 131064, 131072, 2, 13106
 [node name="Player" parent="." instance=ExtResource("1_diavd")]
 position = Vector2(0, -14)
 collision_layer = 2
-script = ExtResource("2_wubgp")
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 offset = Vector2(0, -25)
