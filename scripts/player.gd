@@ -15,8 +15,10 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @onready var sprite_2d = $Sprite2d
 @onready var coyote_time = $CoyoteTime
 @onready var collision_shape_2d = $CollisionShape2D
-@onready var shrink = $SFX/Shrink
+@onready var shrink_sound = $SFX/Shrink
 @onready var grow = $SFX/Grow
+@onready var splash = $Splash
+@onready var shrink_particles = $Shrink
 
 func _physics_process(delta):
 	
@@ -58,6 +60,11 @@ func _physics_process(delta):
 	if was_on_floor && !is_on_floor():
 		coyote_time.start()
 		
+	if is_on_floor() && direction != 0:
+		splash.emitting = true
+	else:
+		splash.emitting = false
+		
 	update_animations(direction)
 
 func toggle_size():
@@ -68,7 +75,9 @@ func toggle_size():
 	collision_shape_2d.position = Vector2(0, -10) if current_size == 1 else Vector2(0, -8)
 	var tween = create_tween()
 	if current_size == 1:
-		shrink.play()
+		shrink_sound.play()
+		shrink_particles.emitting = true
+		
 		tween.tween_property(sprite_2d, "scale", Vector2(0.5, 0.5), 0.1)
 	else:
 		grow.play()

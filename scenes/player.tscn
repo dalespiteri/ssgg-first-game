@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://ba4xk7eeb27"]
+[gd_scene load_steps=21 format=3 uid="uid://ba4xk7eeb27"]
 
 [ext_resource type="Texture2D" uid="uid://c51yxj3a4m46b" path="res://assets/sprites/robin_run.png" id="1_42xyi"]
 [ext_resource type="Texture2D" uid="uid://kt0s3tj5d7vm" path="res://assets/sprites/robin_jump.png" id="2_3nca4"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bv7qsydqk0f1f" path="res://assets/sprites/robin_fall.png" id="4_hwwvm"]
 [ext_resource type="Texture2D" uid="uid://cv3ipy3808t4a" path="res://assets/sprites/robin_transform.png" id="5_gm7bx"]
 [ext_resource type="AudioStream" uid="uid://db2wa5384td0i" path="res://assets/SFX/power_up.wav" id="6_2pdq1"]
+[ext_resource type="PackedScene" uid="uid://0c41yanaiq23" path="res://scenes/splash.tscn" id="7_2drbd"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ndq0o"]
 radius = 4.0
@@ -334,22 +335,6 @@ tracks/4/keys = {
 "values": [2.258]
 }
 
-[sub_resource type="Animation" id="Animation_akivp"]
-resource_name = "turn"
-length = 0.4
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2d:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [24, 25, 26, 27]
-}
-
 [sub_resource type="Animation" id="Animation_2t3b2"]
 resource_name = "transform"
 length = 0.2
@@ -403,6 +388,22 @@ tracks/3/keys = {
 "values": [0, 1]
 }
 
+[sub_resource type="Animation" id="Animation_akivp"]
+resource_name = "turn"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2d:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [24, 25, 26, 27]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_qrj3j"]
 _data = {
 "RESET": SubResource("Animation_3yre3"),
@@ -414,6 +415,21 @@ _data = {
 "turn": SubResource("Animation_akivp")
 }
 
+[sub_resource type="Curve" id="Curve_6k5jr"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.604396), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_qacho"]
+colors = PackedColorArray(0.545098, 0.568627, 0.313726, 1, 0.545098, 0.568627, 0.313726, 0)
+
+[sub_resource type="Gradient" id="Gradient_pdnvv"]
+colors = PackedColorArray(0.823529, 0.756863, 0.694118, 1, 0.823529, 0.756863, 0.694118, 0)
+
+[sub_resource type="Curve" id="Curve_346dj"]
+min_value = -1.0
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 
 [node name="Sprite2d" type="Sprite2D" parent="."]
@@ -422,6 +438,7 @@ texture = ExtResource("1_42xyi")
 hframes = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(0, -8)
 shape = SubResource("CapsuleShape2D_ndq0o")
 
@@ -449,3 +466,38 @@ stream = ExtResource("6_2pdq1")
 volume_db = -9.0
 pitch_scale = 0.7
 bus = &"Sound Effects"
+
+[node name="Splash" parent="." instance=ExtResource("7_2drbd")]
+position = Vector2(0, 0)
+emitting = false
+amount = 30
+emission_rect_extents = Vector2(7, 0)
+gravity = Vector2(0, 30)
+initial_velocity_min = 5.35
+initial_velocity_max = 16.35
+
+[node name="Shrink" type="CPUParticles2D" parent="."]
+position = Vector2(0, -11)
+emitting = false
+amount = 500
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+randomness = 1.0
+direction = Vector2(0, 0)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 10.0
+initial_velocity_max = 60.0
+linear_accel_min = 1.0
+linear_accel_max = 5.0
+radial_accel_min = -100.0
+radial_accel_max = 100.0
+scale_amount_min = 0.1
+scale_amount_max = 0.5
+scale_amount_curve = SubResource("Curve_6k5jr")
+color_ramp = SubResource("Gradient_qacho")
+color_initial_ramp = SubResource("Gradient_pdnvv")
+hue_variation_min = -1.0
+hue_variation_max = 1.0
+hue_variation_curve = SubResource("Curve_346dj")

@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://0k5sbebatipk"]
+[gd_scene load_steps=12 format=3 uid="uid://0k5sbebatipk"]
 
 [ext_resource type="PackedScene" uid="uid://ba4xk7eeb27" path="res://scenes/player.tscn" id="1_diavd"]
 [ext_resource type="Script" path="res://scripts/player.gd" id="2_wubgp"]
 [ext_resource type="Texture2D" uid="uid://6da26gll0ou2" path="res://assets/tilesets/midground_.png" id="3_u3171"]
 [ext_resource type="Texture2D" uid="uid://cobxba6uh154w" path="res://assets/tilesets/background_.png" id="4_rlt51"]
 [ext_resource type="PackedScene" uid="uid://0717asw2pmah" path="res://scenes/next_level.tscn" id="5_8ko8s"]
+[ext_resource type="PackedScene" uid="uid://brdaqeqtsutrd" path="res://scenes/rain.tscn" id="6_wqpe7"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_e0h5i"]
 texture = ExtResource("3_u3171")
@@ -203,3 +204,8 @@ shape = SubResource("WorldBoundaryShape2D_j8it8")
 
 [node name="NextLevel" parent="." instance=ExtResource("5_8ko8s")]
 position = Vector2(302, -3)
+
+[node name="Rain" parent="." instance=ExtResource("6_wqpe7")]
+position = Vector2(246, -156)
+amount = 9000
+scale_amount_max = 1.0
