@@ -1,12 +1,14 @@
-[gd_scene load_steps=21 format=3 uid="uid://ba4xk7eeb27"]
+[gd_scene load_steps=18 format=3 uid="uid://ba4xk7eeb27"]
 
 [ext_resource type="Texture2D" uid="uid://c51yxj3a4m46b" path="res://assets/sprites/robin_run.png" id="1_42xyi"]
+[ext_resource type="Script" path="res://scripts/player.gd" id="1_flul2"]
 [ext_resource type="Texture2D" uid="uid://kt0s3tj5d7vm" path="res://assets/sprites/robin_jump.png" id="2_3nca4"]
 [ext_resource type="Texture2D" uid="uid://u352bls3rxcn" path="res://assets/sprites/robin_idle.png" id="2_ksibt"]
 [ext_resource type="Texture2D" uid="uid://bv7qsydqk0f1f" path="res://assets/sprites/robin_fall.png" id="4_hwwvm"]
 [ext_resource type="Texture2D" uid="uid://cv3ipy3808t4a" path="res://assets/sprites/robin_transform.png" id="5_gm7bx"]
 [ext_resource type="AudioStream" uid="uid://db2wa5384td0i" path="res://assets/SFX/power_up.wav" id="6_2pdq1"]
 [ext_resource type="PackedScene" uid="uid://0c41yanaiq23" path="res://scenes/splash.tscn" id="7_2drbd"]
+[ext_resource type="PackedScene" uid="uid://btaxm8f8wlxe4" path="res://scenes/cooldown_bar.tscn" id="8_781io"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ndq0o"]
 radius = 4.0
@@ -431,6 +433,7 @@ _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 2
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
+script = ExtResource("1_flul2")
 
 [node name="Sprite2d" type="Sprite2D" parent="."]
 position = Vector2(0, -12)
@@ -448,10 +451,6 @@ libraries = {
 }
 autoplay = "idle"
 speed_scale = 0.75
-
-[node name="CoyoteTime" type="Timer" parent="."]
-wait_time = 0.15
-one_shot = true
 
 [node name="SFX" type="Node" parent="."]
 
@@ -501,3 +500,26 @@ color_initial_ramp = SubResource("Gradient_pdnvv")
 hue_variation_min = -1.0
 hue_variation_max = 1.0
 hue_variation_curve = SubResource("Curve_346dj")
+[node name="Timers" type="Node" parent="."]
+
+[node name="CoyoteTime" type="Timer" parent="Timers"]
+wait_time = 0.15
+one_shot = true
+
+[node name="Dash" type="Timer" parent="Timers"]
+wait_time = 0.1
+one_shot = true
+
+[node name="DashCooldown" type="Timer" parent="Timers"]
+wait_time = 2.0
+one_shot = true
+
+[node name="CooldownBar" parent="." instance=ExtResource("8_781io")]
+visible = false
+offset_left = -6.0
+offset_top = -30.0
+offset_right = 6.0
+offset_bottom = -27.0
+
+[connection signal="timeout" from="Timers/Dash" to="." method="_on_dash_timeout"]
+[connection signal="timeout" from="Timers/DashCooldown" to="." method="_on_dash_cooldown_timeout"]
