@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://ba4xk7eeb27"]
+[gd_scene load_steps=20 format=3 uid="uid://ba4xk7eeb27"]
 
 [ext_resource type="Texture2D" uid="uid://c51yxj3a4m46b" path="res://assets/sprites/robin_run.png" id="1_42xyi"]
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_flul2"]
@@ -417,20 +417,8 @@ _data = {
 "turn": SubResource("Animation_akivp")
 }
 
-[sub_resource type="Curve" id="Curve_6k5jr"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.604396), 0.0, 0.0, 0, 0]
-point_count = 2
-
-[sub_resource type="Gradient" id="Gradient_qacho"]
-colors = PackedColorArray(0.545098, 0.568627, 0.313726, 1, 0.545098, 0.568627, 0.313726, 0)
-
-[sub_resource type="Gradient" id="Gradient_pdnvv"]
-colors = PackedColorArray(0.823529, 0.756863, 0.694118, 1, 0.823529, 0.756863, 0.694118, 0)
-
-[sub_resource type="Curve" id="Curve_346dj"]
-min_value = -1.0
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
-point_count = 2
+[sub_resource type="Gradient" id="Gradient_4oohm"]
+colors = PackedColorArray(0.70877, 0.833862, 0.994268, 1, 1, 1, 1, 0)
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 script = ExtResource("1_flul2")
@@ -466,40 +454,8 @@ volume_db = -9.0
 pitch_scale = 0.7
 bus = &"Sound Effects"
 
-[node name="Splash" parent="." instance=ExtResource("7_2drbd")]
-position = Vector2(0, 0)
-emitting = false
-amount = 30
-emission_rect_extents = Vector2(7, 0)
-gravity = Vector2(0, 30)
-initial_velocity_min = 5.35
-initial_velocity_max = 16.35
+[node name="Particles" type="Node" parent="."]
 
-[node name="Shrink" type="CPUParticles2D" parent="."]
-position = Vector2(0, -11)
-emitting = false
-amount = 500
-lifetime = 0.5
-one_shot = true
-explosiveness = 1.0
-randomness = 1.0
-direction = Vector2(0, 0)
-spread = 180.0
-gravity = Vector2(0, 0)
-initial_velocity_min = 10.0
-initial_velocity_max = 60.0
-linear_accel_min = 1.0
-linear_accel_max = 5.0
-radial_accel_min = -100.0
-radial_accel_max = 100.0
-scale_amount_min = 0.1
-scale_amount_max = 0.5
-scale_amount_curve = SubResource("Curve_6k5jr")
-color_ramp = SubResource("Gradient_qacho")
-color_initial_ramp = SubResource("Gradient_pdnvv")
-hue_variation_min = -1.0
-hue_variation_max = 1.0
-hue_variation_curve = SubResource("Curve_346dj")
 [node name="Timers" type="Node" parent="."]
 
 [node name="CoyoteTime" type="Timer" parent="Timers"]
@@ -520,6 +476,21 @@ offset_left = -6.0
 offset_top = -30.0
 offset_right = 6.0
 offset_bottom = -27.0
+
+[node name="Splash" parent="." instance=ExtResource("7_2drbd")]
+position = Vector2(0, -1)
+emitting = false
+amount = 16
+lifetime = 0.25
+speed_scale = 1.0
+randomness = 1.0
+emission_rect_extents = Vector2(5, 1)
+spread = 69.6
+gravity = Vector2(0, -100)
+damping_max = 100.0
+scale_amount_max = 6.0
+color = Color(0.8455, 0.95, 0.87685, 0.713726)
+color_ramp = SubResource("Gradient_4oohm")
 
 [connection signal="timeout" from="Timers/Dash" to="." method="_on_dash_timeout"]
 [connection signal="timeout" from="Timers/DashCooldown" to="." method="_on_dash_cooldown_timeout"]

@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://brdaqeqtsutrd"]
+[gd_scene format=3 uid="uid://dhj4smubfwlwc"]
 
 [node name="Rain" type="CPUParticles2D"]
 position = Vector2(21, 0)
