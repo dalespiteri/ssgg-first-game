@@ -59,6 +59,15 @@ func _physics_process(delta):
 		coyote_time.start()
 		
 	update_animations(direction)
+	
+	#detect if the player has collided with a hazard
+	for i in get_slide_collision_count():
+		var collision = get_slide_collision(i)
+		var body = collision.get_collider()
+		if body.is_in_group("Hazard"):
+			get_tree().change_scene_to_file.bind("res://scenes/menus/end_menu.tscn").call_deferred()
+		
+#		
 
 func toggle_size():
 	var colShape = CapsuleShape2D.new()
@@ -98,3 +107,5 @@ func update_animations(direction: int):
 			a_p.play("jump")
 		elif velocity.y > 0:
 			a_p.play("fall")
+
+
