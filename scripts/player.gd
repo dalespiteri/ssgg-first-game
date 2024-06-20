@@ -3,8 +3,12 @@ extends CharacterBody2D
 var current_size = 1
 const BASE_SPEED = 175.0
 const BASE_JUMP_VELOCITY = -250.0
+const DASH_SPEED = 4.0
 var current_speed = BASE_SPEED * current_size
 var current_jump_velocity = BASE_JUMP_VELOCITY * current_size
+var is_dashing = false
+var dash_direction = 1
+var is_dash_on_cooldown = false
 
 var jumps_remaining = 2
 
@@ -17,6 +21,9 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @onready var collision_shape_2d = $CollisionShape2D
 @onready var shrink = $SFX/Shrink
 @onready var grow = $SFX/Grow
+@onready var dash_timer = $"../Timers/DashTimer"
+@onready var cooldown_timer = $"../Timers/CooldownTimer"
+@onready var cooldown_bar = $CooldownBar
 
 func _physics_process(delta):
 	
@@ -24,7 +31,7 @@ func _physics_process(delta):
 		toggle_size()
 		
 	# Add the gravity.
-	if not is_on_floor():
+	if not is_on_floor() and not is_dashing:
 		velocity.y += gravity * delta
 
 	# Handle jump.
@@ -40,10 +47,29 @@ func _physics_process(delta):
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var direction = Input.get_axis("move_left", "move_right")
 	
-	if direction:
-		velocity.x = direction * current_speed
+	if direction != 0:
+		dash_direction = direction
+	
+	if Input.is_action_just_pressed("dash") && not is_dash_on_cooldown:
+		cooldown_bar.visible = true
+		var tween = get_tree().create_tween()
+		tween.tween_property(cooldown_bar.get_node('Bar'), 'size', Vector2(0, 1), 2)
+		tween.connect("finished", on_cooldown_finished)
+		dash_timer.start()
+		cooldown_timer.start()
+		is_dashing = true
+		is_dash_on_cooldown = true
+		print('dash started')
+	
+	if is_dashing:
+		print('dash moving')
+		velocity.x = dash_direction * current_speed * DASH_SPEED
 	else:
-		velocity.x = move_toward(velocity.x, 0, current_speed)
+		if direction:
+			print ('non-dash movement')
+			velocity.x = direction * current_speed
+		else:
+			velocity.x = move_toward(velocity.x, 0, current_speed)
 	
 	if direction < 0:
 		sprite_2d.flip_h = true
@@ -66,8 +92,6 @@ func _physics_process(delta):
 		var body = collision.get_collider()
 		if body.is_in_group("Hazard"):
 			get_tree().change_scene_to_file.bind("res://scenes/menus/end_menu.tscn").call_deferred()
-		
-#		
 
 func toggle_size():
 	var colShape = CapsuleShape2D.new()
@@ -92,7 +116,6 @@ func on_tween_finished():
 	set_current_movement()
 
 func set_current_movement():
-	print(current_size)
 	current_speed = BASE_SPEED * current_size
 	current_jump_velocity = BASE_JUMP_VELOCITY * current_size
 
@@ -108,4 +131,14 @@ func update_animations(direction: int):
 		elif velocity.y > 0:
 			a_p.play("fall")
 
+func _on_dash_timer_timeout():
+	print('dash complete')
+	is_dashing = false
 
+func _on_cooldown_timer_timeout():
+	is_dash_on_cooldown = false
+	cooldown_bar.visible = false
+	
+func on_cooldown_finished():
+	cooldown_bar.get_node('Bar').size = Vector2(14, 1)
+	

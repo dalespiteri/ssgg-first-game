@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://ba4xk7eeb27"]
+[gd_scene load_steps=17 format=3 uid="uid://ba4xk7eeb27"]
 
 [ext_resource type="Texture2D" uid="uid://c51yxj3a4m46b" path="res://assets/sprites/robin_run.png" id="1_42xyi"]
 [ext_resource type="Texture2D" uid="uid://kt0s3tj5d7vm" path="res://assets/sprites/robin_jump.png" id="2_3nca4"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bv7qsydqk0f1f" path="res://assets/sprites/robin_fall.png" id="4_hwwvm"]
 [ext_resource type="Texture2D" uid="uid://cv3ipy3808t4a" path="res://assets/sprites/robin_transform.png" id="5_gm7bx"]
 [ext_resource type="AudioStream" uid="uid://db2wa5384td0i" path="res://assets/SFX/power_up.wav" id="6_2pdq1"]
+[ext_resource type="PackedScene" uid="uid://bog8tx5cxsafa" path="res://scenes/cooldown_bar.tscn" id="7_384m2"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ndq0o"]
 radius = 4.0
@@ -449,3 +450,10 @@ stream = ExtResource("6_2pdq1")
 volume_db = -9.0
 pitch_scale = 0.7
 bus = &"Sound Effects"
+
+[node name="CooldownBar" parent="." instance=ExtResource("7_384m2")]
+visible = false
+offset_left = -8.0
+offset_top = -28.0
+offset_right = 8.0
+offset_bottom = -25.0

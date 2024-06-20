@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://bog8tx5cxsafa"]
+
+[node name="CooldownBar" type="ColorRect"]
+custom_minimum_size = Vector2(16, 3)
+
+[node name="DeadBar" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 15.0
+offset_bottom = 2.0
+color = Color(0.165643, 0.51278, 0.342101, 1)
+
+[node name="Bar" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 15.0
+offset_bottom = 2.0
+color = Color(0.0235294, 1, 0.678431, 1)
