@@ -14,7 +14,6 @@ var jumps_remaining = 2
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
-#@onready var animated_sprite = $AnimatedSprite2D
 @onready var a_p = $AnimationPlayer
 @onready var sprite_2d = $Sprite2d
 @onready var coyote_time = $CoyoteTime
@@ -24,6 +23,9 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @onready var dash_timer = $"../Timers/DashTimer"
 @onready var cooldown_timer = $"../Timers/CooldownTimer"
 @onready var cooldown_bar = $CooldownBar
+
+signal spike_death
+signal pause_pressed
 
 func _physics_process(delta):
 	
@@ -59,14 +61,11 @@ func _physics_process(delta):
 		cooldown_timer.start()
 		is_dashing = true
 		is_dash_on_cooldown = true
-		print('dash started')
 	
 	if is_dashing:
-		print('dash moving')
 		velocity.x = dash_direction * current_speed * DASH_SPEED
 	else:
 		if direction:
-			print ('non-dash movement')
 			velocity.x = direction * current_speed
 		else:
 			velocity.x = move_toward(velocity.x, 0, current_speed)
@@ -91,7 +90,11 @@ func _physics_process(delta):
 		var collision = get_slide_collision(i)
 		var body = collision.get_collider()
 		if body.is_in_group("Hazard"):
-			get_tree().change_scene_to_file.bind("res://scenes/menus/end_menu.tscn").call_deferred()
+			spike_death.emit()
+			
+	if Input.is_action_just_pressed("pause"):
+		pause_pressed.emit()
+			
 
 func toggle_size():
 	var colShape = CapsuleShape2D.new()
