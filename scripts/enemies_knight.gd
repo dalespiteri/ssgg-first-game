@@ -42,11 +42,19 @@ func enemy_patrol():
 	#walks forwards
 	if !player_chase:	
 		velocity.x = direction * speed
-	else:
+	elif player_chase:
+		#check the angle of the player vs the enemy.  if it is between an angle trigger the jump check, but only during aggro
+		var rads = position.normalized().angle_to_point(player.position.normalized()) 
+		
+		if rads < -1 and rads > -1.4:
+			jump()
+
 		velocity.x = direction * speed * 2
 		if (player.position.x - position.x)/direction < 0 and player.is_on_floor():
 				#left is negative direction, im to his left so his x is higher making (player.x - enemy.x) negative. 
-			turn_around()	
+			turn_around()
+
+		#	
 	if is_on_floor():
 		#check if its up against a solid wall
 		if ground_detector.has_overlapping_bodies() and jump_block.has_overlapping_bodies() and ray_cast.is_colliding():

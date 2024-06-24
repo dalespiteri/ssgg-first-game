@@ -308,6 +308,7 @@ height = 196.0
 [node name="Knight" type="CharacterBody2D" node_paths=PackedStringArray("flip_node", "ground_detector", "jump_block", "landing_detector", "aggro_drop_detector")]
 script = ExtResource("1_6qed8")
 speed = 75.0
+JUMP_VELOCITY = -300.0
 flip_node = NodePath("DirectionFlip")
 ground_detector = NodePath("DirectionFlip/GroundDetector")
 jump_block = NodePath("DirectionFlip/JumpBlockedDetector")

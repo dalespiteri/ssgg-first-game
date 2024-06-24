@@ -249,8 +249,7 @@ wait_time = 2.0
 one_shot = true
 
 [node name="Knight" parent="." instance=ExtResource("7_y6euw")]
-position = Vector2(71, -30)
-SPEED = 100.0
+position = Vector2(-23, -16)
 
 [connection signal="timeout" from="Timers/DashTimer" to="Player" method="_on_dash_timer_timeout"]
 [connection signal="timeout" from="Timers/CooldownTimer" to="Player" method="_on_cooldown_timer_timeout"]
