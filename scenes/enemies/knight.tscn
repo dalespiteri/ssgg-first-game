@@ -1,7 +1,8 @@
-[gd_scene load_steps=14 format=3 uid="uid://cfjma4akm6vvc"]
+[gd_scene load_steps=15 format=3 uid="uid://cfjma4akm6vvc"]
 
 [ext_resource type="Script" path="res://scripts/enemies_knight.gd" id="1_6qed8"]
 [ext_resource type="Texture2D" uid="uid://bm7yw2jg1tcj1" path="res://assets/sprites/camelot_ [version 1.0]/gawain_.png" id="1_wbxa0"]
+[ext_resource type="PackedScene" uid="uid://bwmyvyfyg1i07" path="res://scenes/enemies/weapon_mace.tscn" id="3_3bmu6"]
 
 [sub_resource type="Animation" id="Animation_3vjyx"]
 length = 0.001
@@ -335,11 +336,16 @@ shape = SubResource("CapsuleShape2D_scr57")
 
 [node name="DirectionFlip" type="Node2D" parent="."]
 
+[node name="WeaponMace" parent="DirectionFlip" instance=ExtResource("3_3bmu6")]
+position = Vector2(-6, -18)
+
 [node name="RayCast" type="RayCast2D" parent="DirectionFlip"]
+visible = false
 position = Vector2(2, -10)
 target_position = Vector2(16, 0)
 
 [node name="DetectionArea" type="Area2D" parent="DirectionFlip"]
+visible = false
 collision_layer = 2
 collision_mask = 2
 
@@ -349,24 +355,28 @@ rotation = 1.5708
 shape = SubResource("CapsuleShape2D_48jj4")
 
 [node name="GroundDetector" type="Area2D" parent="DirectionFlip"]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DirectionFlip/GroundDetector"]
 position = Vector2(16, 4)
 shape = SubResource("RectangleShape2D_w4nyf")
 
 [node name="LandingDetector" type="Area2D" parent="DirectionFlip"]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DirectionFlip/LandingDetector"]
 position = Vector2(58.5, 25)
 shape = SubResource("RectangleShape2D_dopl2")
 
 [node name="JumpBlockedDetector" type="Area2D" parent="DirectionFlip"]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DirectionFlip/JumpBlockedDetector"]
 position = Vector2(17, -35)
 shape = SubResource("RectangleShape2D_w4nyf")
 
 [node name="AggroDroppedDetector" type="Area2D" parent="DirectionFlip"]
+visible = false
 collision_layer = 2
 collision_mask = 2
 
