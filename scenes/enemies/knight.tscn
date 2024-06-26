@@ -317,6 +317,7 @@ ground_detector = NodePath("DirectionFlip/GroundDetector")
 jump_block = NodePath("DirectionFlip/JumpBlockedDetector")
 landing_detector = NodePath("DirectionFlip/LandingDetector")
 aggro_drop_detector = NodePath("DirectionFlip/AggroDroppedDetector")
+health = 30.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../Sprite2D")
