@@ -213,6 +213,8 @@ position = Vector2(302, -3)
 position = Vector2(-76, -7)
 collision_layer = 2
 script = ExtResource("2_wubgp")
+health = 100.0
+i_frames = 1.0
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 offset = Vector2(0, -25)
@@ -253,6 +255,5 @@ position = Vector2(-23, -16)
 
 [connection signal="body_entered" from="NextLevel" to="UI" method="_on_next_level_body_entered"]
 [connection signal="pause_pressed" from="Player" to="UI" method="_on_player_pause_pressed"]
-[connection signal="spike_death" from="Player" to="UI" method="_on_player_spike_death"]
 [connection signal="timeout" from="Timers/DashTimer" to="Player" method="_on_dash_timer_timeout"]
 [connection signal="timeout" from="Timers/CooldownTimer" to="Player" method="_on_cooldown_timer_timeout"]
