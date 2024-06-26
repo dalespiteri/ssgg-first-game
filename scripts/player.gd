@@ -12,9 +12,15 @@ var is_dash_on_cooldown = false
 var arrows_remaining = 3
 var jumps_remaining = 2
 var last_known_direction = 1
+var jumps_remaining = 2
+var can_take_damage = true
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
+@export var health:float
+@export var i_frames:float
+
+@onready var health_bar = $HealthBar
 @onready var a_p = $AnimationPlayer
 @onready var sprite_2d = $Sprite2d
 @onready var coyote_time = $CoyoteTime
@@ -28,6 +34,11 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 signal spike_death()
 signal pause_pressed()
+signal player_death()
+
+func _ready():
+	health_bar.max_value = health
+	health_bar.value = health	
 
 func _physics_process(delta):
 	
@@ -98,7 +109,7 @@ func _physics_process(delta):
 		var collision = get_slide_collision(i)
 		var body = collision.get_collider()
 		if body.is_in_group("Hazard"):
-			spike_death.emit()
+			player_death.emit()
 			
 	if Input.is_action_just_pressed("pause"):
 		pause_pressed.emit()
@@ -159,3 +170,16 @@ func shoot_arrow(direction):
 	arrow.direction = direction
 	get_tree().current_scene.add_child(arrow)
 	arrow.global_position = Vector2(self.global_position.x + 5, self.global_position.y + -10)
+
+func take_damage(damage):
+	if can_take_damage:
+		iframes()
+		health -= damage
+		health_bar.value = health
+		if health <= 0:
+			player_death.emit()
+
+func iframes():
+	can_take_damage = false
+	await get_tree().create_timer(i_frames).timeout
+	can_take_damage = true

@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://0k5sbebatipk"]
+[gd_scene load_steps=16 format=3 uid="uid://0k5sbebatipk"]
 
 [ext_resource type="PackedScene" uid="uid://csgv3ovortnw7" path="res://scenes/ui.tscn" id="1_2y1ii"]
 [ext_resource type="PackedScene" uid="uid://ba4xk7eeb27" path="res://scenes/player.tscn" id="1_diavd"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://cobxba6uh154w" path="res://assets/tilesets/background_.png" id="4_rlt51"]
 [ext_resource type="PackedScene" uid="uid://0717asw2pmah" path="res://scenes/next_level.tscn" id="5_8ko8s"]
 [ext_resource type="Texture2D" uid="uid://b0nvjxlvajl8o" path="res://assets/tilesets/16-bit-spike-Sheet.png" id="6_rxxly"]
+[ext_resource type="PackedScene" uid="uid://cfjma4akm6vvc" path="res://scenes/enemies/knight.tscn" id="7_y6euw"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_e0h5i"]
 texture = ExtResource("3_u3171")
@@ -209,9 +210,11 @@ layer_1/tile_data = PackedInt32Array(131063, 131072, 2, 131064, 131072, 2, 13106
 position = Vector2(302, -3)
 
 [node name="Player" parent="." instance=ExtResource("1_diavd")]
-position = Vector2(0, -14)
+position = Vector2(-76, -7)
 collision_layer = 2
 script = ExtResource("2_wubgp")
+health = 100.0
+i_frames = 1.0
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 offset = Vector2(0, -25)
@@ -247,8 +250,10 @@ one_shot = true
 wait_time = 2.0
 one_shot = true
 
+[node name="Knight" parent="." instance=ExtResource("7_y6euw")]
+position = Vector2(-23, -16)
+
 [connection signal="body_entered" from="NextLevel" to="UI" method="_on_next_level_body_entered"]
 [connection signal="pause_pressed" from="Player" to="UI" method="_on_player_pause_pressed"]
-[connection signal="spike_death" from="Player" to="UI" method="_on_player_spike_death"]
 [connection signal="timeout" from="Timers/DashTimer" to="Player" method="_on_dash_timer_timeout"]
 [connection signal="timeout" from="Timers/CooldownTimer" to="Player" method="_on_cooldown_timer_timeout"]
