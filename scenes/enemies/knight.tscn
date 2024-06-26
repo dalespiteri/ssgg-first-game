@@ -386,6 +386,14 @@ shape = SubResource("CapsuleShape2D_uepu7")
 [node name="JumpCooldown" type="Timer" parent="."]
 one_shot = true
 
+[node name="HealthBar" type="ProgressBar" parent="."]
+offset_left = -8.0
+offset_top = -24.0
+offset_right = 9.0
+offset_bottom = -19.0
+step = 1.0
+show_percentage = false
+
 [connection signal="body_entered" from="DirectionFlip/DetectionArea" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="DirectionFlip/AggroDroppedDetector" to="." method="_on_aggro_dropped_detector_body_exited"]
 [connection signal="timeout" from="JumpCooldown" to="." method="_on_jump_cooldown_timeout"]

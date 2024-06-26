@@ -7,7 +7,9 @@ extends CharacterBody2D
 @export var jump_block : Area2D
 @export var landing_detector : Area2D
 @export var aggro_drop_detector : Area2D
+@export var health:float
 
+@onready var health_bar = $HealthBar
 @onready var jump_cooldown = $JumpCooldown
 @onready var player = null
 @onready var player_chase = false
@@ -20,6 +22,10 @@ var is_jump_on_cooldown = false
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
+
+func _ready():
+	health_bar.max_value = health
+	health_bar.value = health
 
 func _physics_process(delta):
 	#move forward on patrol
@@ -116,7 +122,11 @@ func turn_around():
 		flip_node.scale.x *= -1
 		sprite_2d.flip_h = !sprite_2d.flip_h
 		
-
+func take_damage(damage):
+	health -= damage
+	health_bar.value = health
+	if health <= 0:
+		queue_free()
 
 
 
