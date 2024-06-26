@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://csgv3ovortnw7"]
+
+[ext_resource type="Script" path="res://scripts/ui.gd" id="1_wtoi8"]
+[ext_resource type="PackedScene" uid="uid://c5mwg65j01xkv" path="res://scenes/health.tscn" id="1_xjt6o"]
+[ext_resource type="PackedScene" uid="uid://bjop4vofljswm" path="res://scenes/menus/end_game.tscn" id="3_b3e87"]
+
+[node name="UI" type="CanvasLayer"]
+script = ExtResource("1_wtoi8")
+
+[node name="Health" parent="." instance=ExtResource("1_xjt6o")]
+
+[node name="Menu" parent="." instance=ExtResource("3_b3e87")]
+process_mode = 2
+visible = false
