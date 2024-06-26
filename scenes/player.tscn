@@ -418,7 +418,6 @@ _data = {
 }
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
-collision_layer = 3
 
 [node name="Sprite2d" type="Sprite2D" parent="."]
 position = Vector2(0, -12)
@@ -469,15 +468,3 @@ texture = ExtResource("8_6ox67")
 hframes = 5
 frame = 1
 script = ExtResource("9_tmy53")
-offset_left = -8.0
-offset_top = -28.0
-offset_right = 8.0
-offset_bottom = -25.0
-
-[node name="HealthBar" type="ProgressBar" parent="."]
-offset_left = -15.0
-offset_top = -31.0
-offset_right = 15.0
-offset_bottom = -24.0
-step = 1.0
-show_percentage = false

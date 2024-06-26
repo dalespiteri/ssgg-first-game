@@ -12,7 +12,6 @@ var is_dash_on_cooldown = false
 var arrows_remaining = 3
 var jumps_remaining = 2
 var last_known_direction = 1
-var jumps_remaining = 2
 var can_take_damage = true
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
@@ -38,7 +37,7 @@ signal player_death()
 
 func _ready():
 	health_bar.max_value = health
-	health_bar.value = health	
+	health_bar.value = health
 
 func _physics_process(delta):
 	
