@@ -9,8 +9,9 @@ var current_jump_velocity = BASE_JUMP_VELOCITY * current_size
 var is_dashing = false
 var dash_direction = 1
 var is_dash_on_cooldown = false
-
+var arrows_remaining = 3
 var jumps_remaining = 2
+var last_known_direction = 1
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -23,14 +24,20 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @onready var dash_timer = $"../Timers/DashTimer"
 @onready var cooldown_timer = $"../Timers/CooldownTimer"
 @onready var cooldown_bar = $CooldownBar
+@onready var bow = $Bow
 
-signal spike_death
-signal pause_pressed
+signal spike_death()
+signal pause_pressed()
 
 func _physics_process(delta):
 	
 	if Input.is_action_just_pressed("toggle_size"):
 		toggle_size()
+		
+	if Input.is_action_just_pressed("attack"):
+		#bow.direction = last_known_direction
+		#bow.show()
+		shoot_arrow(last_known_direction)
 		
 	# Add the gravity.
 	if not is_on_floor() and not is_dashing:
@@ -51,6 +58,7 @@ func _physics_process(delta):
 	
 	if direction != 0:
 		dash_direction = direction
+		last_known_direction = direction
 	
 	if Input.is_action_just_pressed("dash") && not is_dash_on_cooldown:
 		cooldown_bar.visible = true
@@ -145,3 +153,9 @@ func _on_cooldown_timer_timeout():
 func on_cooldown_finished():
 	cooldown_bar.get_node('Bar').size = Vector2(14, 1)
 	
+func shoot_arrow(direction):
+	var ARROW: PackedScene = preload("res://scenes/arrow.tscn")
+	var arrow = ARROW.instantiate()
+	arrow.direction = direction
+	get_tree().current_scene.add_child(arrow)
+	arrow.global_position = Vector2(self.global_position.x + 5, self.global_position.y + -10)
