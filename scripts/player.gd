@@ -11,6 +11,7 @@ var dash_direction = 1
 var is_dash_on_cooldown = false
 var jumps_remaining = 2
 var can_take_damage = true
+var last_known_direction = 1
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -37,6 +38,9 @@ func _ready():
 
 func _physics_process(delta):
 	
+	if Input.is_action_just_pressed("attack"):
+		shoot_arrow(last_known_direction)
+	
 	if Input.is_action_just_pressed("toggle_size"):
 		toggle_size()
 		
@@ -58,6 +62,7 @@ func _physics_process(delta):
 	var direction = Input.get_axis("move_left", "move_right")
 	
 	if direction != 0:
+		last_known_direction = direction
 		dash_direction = direction
 	
 	if Input.is_action_just_pressed("dash") && not is_dash_on_cooldown:
@@ -165,3 +170,10 @@ func iframes():
 	can_take_damage = false
 	await get_tree().create_timer(i_frames).timeout
 	can_take_damage = true
+	
+func shoot_arrow(direction):
+	var ARROW: PackedScene = preload("res://scenes/arrow.tscn")
+	var arrow = ARROW.instantiate()
+	arrow.direction = direction
+	get_tree().current_scene.add_child(arrow)
+	arrow.global_position = Vector2(self.global_position.x + 5, self.global_position.y + -10)

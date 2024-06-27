@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://0k5sbebatipk"]
+[gd_scene load_steps=17 format=3 uid="uid://0k5sbebatipk"]
 
 [ext_resource type="PackedScene" uid="uid://csgv3ovortnw7" path="res://scenes/ui.tscn" id="1_2y1ii"]
 [ext_resource type="PackedScene" uid="uid://ba4xk7eeb27" path="res://scenes/player.tscn" id="1_diavd"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://0717asw2pmah" path="res://scenes/next_level.tscn" id="5_8ko8s"]
 [ext_resource type="Texture2D" uid="uid://b0nvjxlvajl8o" path="res://assets/tilesets/16-bit-spike-Sheet.png" id="6_rxxly"]
 [ext_resource type="PackedScene" uid="uid://cfjma4akm6vvc" path="res://scenes/enemies/knight.tscn" id="7_y6euw"]
+[ext_resource type="PackedScene" uid="uid://3rma6ahn2pp" path="res://scenes/arrow.tscn" id="9_wr1id"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_e0h5i"]
 texture = ExtResource("3_u3171")
@@ -252,6 +253,9 @@ one_shot = true
 
 [node name="Knight" parent="." instance=ExtResource("7_y6euw")]
 position = Vector2(-23, -16)
+
+[node name="Arrow" parent="." instance=ExtResource("9_wr1id")]
+position = Vector2(-327, -238)
 
 [connection signal="body_entered" from="NextLevel" to="UI" method="_on_next_level_body_entered"]
 [connection signal="pause_pressed" from="Player" to="UI" method="_on_player_pause_pressed"]
