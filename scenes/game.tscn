@@ -251,11 +251,11 @@ one_shot = true
 wait_time = 2.0
 one_shot = true
 
-[node name="Knight" parent="." instance=ExtResource("7_y6euw")]
-position = Vector2(-23, -16)
-
 [node name="Arrow" parent="." instance=ExtResource("9_wr1id")]
 position = Vector2(-327, -238)
+
+[node name="Knight" parent="." instance=ExtResource("7_y6euw")]
+position = Vector2(-155, 6)
 
 [connection signal="body_entered" from="NextLevel" to="UI" method="_on_next_level_body_entered"]
 [connection signal="pause_pressed" from="Player" to="UI" method="_on_player_pause_pressed"]
