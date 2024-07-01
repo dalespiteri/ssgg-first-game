@@ -168,8 +168,13 @@ func take_damage(damage):
 
 func iframes():
 	can_take_damage = false
+	#sets sprite color red and saves original color overlay
+	var original_color = sprite_2d.self_modulate 
+	sprite_2d.self_modulate = Color(0.862745, 0.0784314, 0.235294, 1)
 	await get_tree().create_timer(i_frames).timeout
+	sprite_2d.self_modulate = original_color
 	can_take_damage = true
+	
 	
 func shoot_arrow(direction):
 	var ARROW: PackedScene = preload("res://scenes/arrow.tscn")
