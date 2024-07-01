@@ -103,7 +103,7 @@ func _physics_process(delta):
 		var collision = get_slide_collision(i)
 		var body = collision.get_collider()
 		if body.is_in_group("Hazard"):
-			player_death.emit()
+			take_damage(10)
 			
 	if Input.is_action_just_pressed("pause"):
 		pause_pressed.emit()
