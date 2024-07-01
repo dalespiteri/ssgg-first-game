@@ -293,7 +293,6 @@ radius = 5.0
 height = 14.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_48jj4"]
-radius = 13.0
 height = 168.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w4nyf"]
@@ -303,7 +302,7 @@ size = Vector2(8, 8)
 size = Vector2(47, 50)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_uepu7"]
-radius = 39.0
+radius = 26.0
 height = 196.0
 
 [node name="Knight" type="CharacterBody2D" node_paths=PackedStringArray("flip_node", "ground_detector", "jump_block", "landing_detector", "aggro_drop_detector")]

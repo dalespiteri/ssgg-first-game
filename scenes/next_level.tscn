@@ -1,20 +1,22 @@
 [gd_scene load_steps=3 format=3 uid="uid://0717asw2pmah"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_xsate"]
-size = Vector2(20.5, 38)
+[ext_resource type="Texture2D" uid="uid://2ae50ytkla4u" path="res://assets/sprites/maidMarian_.png" id="1_rumxn"]
 
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_8kr57"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xsate"]
+size = Vector2(11.5, 17)
 
 [node name="NextLevel" type="Area2D"]
 collision_layer = 2
 collision_mask = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_xsate")
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(1, -12)
+texture = ExtResource("1_rumxn")
+hframes = 8
+vframes = 5
 
-[node name="Sprite2D" type="Sprite2D" parent="CollisionShape2D"]
-position = Vector2(0, 9.53674e-07)
-scale = Vector2(20.5, 38)
-texture = SubResource("PlaceholderTexture2D_8kr57")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.75, -8.5)
+shape = SubResource("RectangleShape2D_xsate")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
