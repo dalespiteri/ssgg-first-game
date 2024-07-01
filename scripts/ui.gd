@@ -9,10 +9,6 @@ func _on_next_level_body_entered(body):
 	menu.visible = true
 
 
-func _on_player_spike_death():
-	get_tree().paused = true
-	menu.set_title('YOU FUCKING LOST BITCH')
-	menu.visible = true
 
 func _on_player_pause_pressed():
 	paused = !paused
@@ -22,3 +18,9 @@ func _on_player_pause_pressed():
 		menu.visible = true
 	else:
 		menu.visible = false
+
+
+func _on_player_player_death():
+		get_tree().paused = true
+		menu.set_title('YOU FUCKING LOST BITCH')
+		menu.visible = true

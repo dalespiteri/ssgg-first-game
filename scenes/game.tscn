@@ -259,5 +259,6 @@ position = Vector2(-155, 6)
 
 [connection signal="body_entered" from="NextLevel" to="UI" method="_on_next_level_body_entered"]
 [connection signal="pause_pressed" from="Player" to="UI" method="_on_player_pause_pressed"]
+[connection signal="player_death" from="Player" to="UI" method="_on_player_player_death"]
 [connection signal="timeout" from="Timers/DashTimer" to="Player" method="_on_dash_timer_timeout"]
 [connection signal="timeout" from="Timers/CooldownTimer" to="Player" method="_on_cooldown_timer_timeout"]
